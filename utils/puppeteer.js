@@ -1,4 +1,3 @@
-import { getOptions } from "./options";
 const chromium = require("chrome-aws-lambda");
 
 let _page;
@@ -8,9 +7,15 @@ async function getPage() {
     return _page;
   }
 
-  const options = await getOptions();
-  const browser = await chromium.puppeteer.launch(options);
+  const browser = await chromium.puppeteer.launch({
+    args: chromium.args,
+    executablePath: await chromium.executablePath,
+    headless: true,
+    ignoreHTTPSErrors: true,
+  });
+
   _page = await browser.newPage();
+
   return _page;
 }
 
