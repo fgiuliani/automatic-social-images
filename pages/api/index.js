@@ -2,15 +2,13 @@ import { parseRequest } from "../../utils/parser";
 import { getScreenshot } from "../../utils/puppeteer";
 import { getHtml } from "../../utils/html";
 
-const isDev = !process.env.AWS_REGION;
-
 export default async function handle(req, res) {
   try {
     const parsedReq = parseRequest(req);
 
     const html = getHtml(parsedReq);
     const { fileType } = parsedReq;
-    const file = await getScreenshot(html, fileType, isDev);
+    const file = await getScreenshot(html, fileType);
 
     res.statusCode = 200;
     res.setHeader("Content-Type", `image/${fileType}`);
