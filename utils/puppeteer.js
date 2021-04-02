@@ -1,4 +1,14 @@
-const chromium = require("chrome-aws-lambda");
+let chromium = {};
+let puppeteer;
+
+if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
+  // running on the Vercel platform.
+  chromium = require("chrome-aws-lambda");
+  puppeteer = require("puppeteer-core");
+} else {
+  // running locally.
+  puppeteer = require("puppeteer");
+}
 
 let _page;
 
@@ -7,7 +17,7 @@ async function getPage() {
     return _page;
   }
 
-  const browser = await chromium.puppeteer.launch({
+  const browser = await puppeteer.launch({
     args: chromium.args,
     executablePath: await chromium.executablePath,
     headless: true,
