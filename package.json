@@ -14,8 +14,5 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "url": "^0.11.0"
-  },
-  "devDependencies": {
-    "puppeteer": "^8.0.0"
   }
 }
