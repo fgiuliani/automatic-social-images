@@ -8,7 +8,7 @@ async function getPage() {
     return _page;
   }
 
-  const options = process.env.AWS_REGION
+  const options = process.env.IS_PROD
     ? {
         args: chrome.args,
         executablePath: await chrome.executablePath,
