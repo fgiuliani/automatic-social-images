@@ -9,7 +9,7 @@ async function getPage() {
   }
 
   const options =
-    process.env.IS_PROD == "1"
+    process.env.IS_PROD === "1"
       ? {
           args: chrome.args,
           executablePath: await chrome.executablePath,
