@@ -8,22 +8,23 @@ async function getPage() {
     return _page;
   }
 
-  const options = process.env.IS_PROD
-    ? {
-        args: chrome.args,
-        executablePath: await chrome.executablePath,
-        headless: true,
-      }
-    : {
-        args: [],
-        executablePath:
-          process.platform === "win32"
-            ? "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
-            : process.platform === "linux"
-            ? "/usr/bin/google-chrome"
-            : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-        headless: true,
-      };
+  const options =
+    process.env.IS_PROD == "1"
+      ? {
+          args: chrome.args,
+          executablePath: await chrome.executablePath,
+          headless: true,
+        }
+      : {
+          args: [],
+          executablePath:
+            process.platform === "win32"
+              ? "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+              : process.platform === "linux"
+              ? "/usr/bin/google-chrome"
+              : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+          headless: true,
+        };
 
   const browser = await puppeteer.launch(options);
 
