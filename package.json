@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "AWS_LAMBDA_FUNCTION_NAME=true next build",
+    "build": "next build",
     "start": "next start"
   },
   "dependencies": {

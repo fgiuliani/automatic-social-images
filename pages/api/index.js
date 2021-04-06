@@ -1,6 +1,6 @@
-import { parseRequest } from "../../utils/parser";
-import { getScreenshot } from "../../utils/puppeteer";
-import { getHtml } from "../../utils/html";
+import { parseRequest } from "../../lib/parser";
+import { getScreenshot } from "../../lib/puppeteer";
+import { getHtml } from "../../lib/html";
 
 export default async function handle(req, res) {
   try {
